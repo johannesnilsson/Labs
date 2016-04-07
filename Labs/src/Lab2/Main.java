@@ -24,12 +24,20 @@ public class Main {
 	        	wordLadder.add(new Word(wordToAdd));
 	        	System.out.println("SUG");
 	        }
-	        List<Integer> tempForNeighbors = null; // handle temp neighbors
+	      //  List<Integer> tempForNeighbors = null; // handle temp neighbors
 	        
-	        for(int i=0; i < wordLadder.size(); i++){
+	        for(int a=0; a<wordLadder.size(); a++) //index for words
+	        {    
+	        	Word currentWord = wordLadder.get(a); // keeps the current word
+	        	for(int i=0; i < wordLadder.size(); i++) // comparing index
+	        	{
+	        	Word compareWord = wordLadder.get(i);	// get comparison word
+	        	if(currentWord.checkWord(compareWord.getName())) // check if word is match
+	        	{
+	        		currentWord.addNeighbour(i);; // add the index of match
+	        	}
 	        	//System.out.println("hahaha");
-	        	
+	        	}
 	        }
-	}	
-	
+	}		
 }
