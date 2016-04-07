@@ -23,13 +23,16 @@ public class Word {
 		int nbrOfBreaks = 0;
 		for(int i = 1; i < theWord.length(); i++){
 			for(int j = 0; j < s.length(); j++ ){
-				//System.out.println("index i: " + i + " index j: " + j);
+				System.out.println("theWord: " + theWord + " s: " + s);
 				if(theWord.charAt(i) == s.charAt(j)){
+					s.replace(s.charAt(j), ' ');
+					System.out.println("s after replace: " + s);
 					nbrOfBreaks++;
 					break;
 				}
 			}
 		}
+		System.out.println("RETURN: " + (nbrOfBreaks == (theWord.length() - 1)));
 		
 		return nbrOfBreaks == (theWord.length() - 1); 
 	}
