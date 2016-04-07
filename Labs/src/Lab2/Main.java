@@ -29,13 +29,16 @@ public class Main {
 	        for(int a=0; a<wordLadder.size(); a++) //index for words
 	        {    
 	        	Word currentWord = wordLadder.get(a); // keeps the current word
+        		System.out.println(currentWord.getName() + "\n");
 	        	for(int i=0; i < wordLadder.size(); i++) // comparing index
 	        	{
 	        	Word compareWord = wordLadder.get(i);	// get comparison word
 	        	if(currentWord.checkWord(compareWord.getName())) // check if word is match
 	        	{
 	        		currentWord.addNeighbour(i);; // add the index of match
-	        		System.out.println("We found a match =)");
+
+	        		//System.out.println();
+	        		System.out.print(compareWord.getName() +" ");
 	        	}
 	        	//System.out.println("hahaha");
 	        	}
