@@ -9,47 +9,18 @@ public class Main {
 	
 	public static void main(String [] args){
 		
-		//File myFile = new File("C:\\Users\\Johannes\\GITHUB2\\Labs\\src\\Lab2\\words-10.dat");
-		File myFile = new File("/Users/emirhusic/git/Labs/Labs/src/Lab2/words-10.dat");
-		Scanner scan = null; //kommentar
-		try {
-			scan = new Scanner(myFile);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	   
-	        while(scan.hasNext()){
-	        	String wordToAdd = scan.nextLine();
-	        	System.out.println("Adding " + wordToAdd + " to the List");
-	        	wordLadder.add(new Word(wordToAdd));
-	        	System.out.println("SUG");
-	        }
-	        
-	        for(int a=0; a<wordLadder.size(); a++) //index for words
-	        {    
-	        	Word currentWord = wordLadder.get(a); // keeps the current word
-	        	for(int i=0; i < wordLadder.size(); i++) // comparing index
-	        	{
-	        		Word compareWord = wordLadder.get(i);	// get comparison word
-	        		if(currentWord.checkWord(compareWord.getName()) && !currentWord.getName().equals(wordLadder.get(i).getName())) // check if word is match
-	        		{
-	        			currentWord.addNeighbour(i);; // add the index of match
-	        		}
-	        	}
-	        }
-	        for(int i = 0; i < wordLadder.size(); i++)
-	        {
-	        	System.out.println(" theName: " +wordLadder.get(i).getName());
-	        	for(int j = 0; j < wordLadder.get(i).neighbours.size(); j++)
-	        	{
-	        		System.out.print(" " +wordLadder.get(wordLadder.get(i).neighbours.get(j)).getName());
-	        	}
-	        	System.out.println();
-	        }
-	        
+		// create graph get input file of words
+		ReadIO myIO = new ReadIO();
+		wordLadder = myIO.createGraphs(args[0]);//args[0]);
+		System.out.println(args[0]);
+		System.out.println(args[1]);
+		myIO.readInput(args[1]);		//read compare file
+		
+		// get input of compare words.
+		        
 	       // BFS(List<Word> wordLadder, String begin, String end)
-	        BFS myBFS = new BFS(wordLadder,"write","their");
-	        System.out.println(myBFS.doit());
+	       // BFS myBFS = new BFS();
+	        //System.out.println(myBFS.doit());
 	        
 	}		
 }
