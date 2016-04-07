@@ -8,7 +8,7 @@ public class Main {
 	static List<Word> wordLadder = new ArrayList<Word>();
 	
 	public static void main(String [] args){
-		File myFile = new File("C:\\Users\\Johannes\\Documents\\LOL\\lab2\\src\\lab2\\words-10.dat");
+		File myFile = new File("/Users/emirhusic/git/Labs/Labs/src/Lab2/words-10.dat");
 		Scanner scan = null;
 		try {
 			scan = new Scanner(myFile);
@@ -22,5 +22,12 @@ public class Main {
 	        	wordLadder.add(new Word(wordToAdd));
 	        	System.out.println("SUG");
 	        }
-	}
+	        List<Integer> tempForNeighbors = null; // handle temp neighbors
+	        
+	        for(int i=0; i < wordLadder.size(); i++){
+	        	//System.out.println("hahaha");
+	        	
+	        }
+	}	
+	
 }
