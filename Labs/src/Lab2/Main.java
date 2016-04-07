@@ -9,8 +9,8 @@ public class Main {
 	
 	public static void main(String [] args){
 		
-		//File myFile = new File("C:\\Users\\Johannes\\GITHUB2\\Labs\\src\\Lab2\\words-10.dat");
-		File myFile = new File("/Users/emirhusic/git/Labs/Labs/src/Lab2/words-10.dat");
+		File myFile = new File("C:\\Users\\Johannes\\GITHUB2\\Labs\\src\\Lab2\\words-10.dat");
+		//File myFile = new File("/Users/emirhusic/git/Labs/Labs/src/Lab2/words-10.dat");
 		Scanner scan = null; //kommentar
 		try {
 			scan = new Scanner(myFile);
