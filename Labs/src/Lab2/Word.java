@@ -5,6 +5,11 @@ import java.util.*;
 public class Word {
 	String theWord = null; //
 	List<Integer> neighbours = null;
+	int distance = -1;
+	
+	public void setDistance(int d){
+		distance = d;
+	}
 
 	public Word(String word){
 		theWord = word;
