@@ -1,6 +1,6 @@
 package Lab2;
 
-import java.util.List;
+import java.util.*;
 
 public class Word {
 	String theWord = null;
@@ -8,5 +8,28 @@ public class Word {
 
 	public Word(String word){
 		theWord = word;
+		neighbours = new ArrayList<Integer>();
+	}
+	
+	public String getName(){
+		return theWord;
+	}
+	
+	public void addNeighbour(int x){
+		neighbours.add(x);
+	}
+	
+	public boolean checkWord(String s){
+		int nbrOfBreaks = 0;
+		for(int i = 0; i < theWord.length(); i++){
+			for(int j = 0; j < s.length(); j++ ){
+				if(theWord.charAt(i+1) == s.charAt(j)){
+					nbrOfBreaks++;
+					break;
+				}
+			}
+		}
+		
+		return nbrOfBreaks == (theWord.length() - 1); 
 	}
 }
