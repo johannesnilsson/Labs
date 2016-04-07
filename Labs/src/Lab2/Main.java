@@ -9,8 +9,8 @@ public class Main {
 	
 	public static void main(String [] args){
 		
-		File myFile = new File("C:\\Users\\Johannes\\GITHUB2\\Labs\\src\\Lab2\\words-10.dat");
-		//File myFile = new File("/Users/emirhusic/git/Labs/Labs/src/Lab2/words-10.dat");
+		//File myFile = new File("C:\\Users\\Johannes\\GITHUB2\\Labs\\src\\Lab2\\words-10.dat");
+		File myFile = new File("/Users/emirhusic/git/Labs/Labs/src/Lab2/words-10.dat");
 		Scanner scan = null; //kommentar
 		try {
 			scan = new Scanner(myFile);
@@ -35,6 +35,7 @@ public class Main {
 	        	if(currentWord.checkWord(compareWord.getName())) // check if word is match
 	        	{
 	        		currentWord.addNeighbour(i);; // add the index of match
+	        		System.out.println("We found a match =)");
 	        	}
 	        	//System.out.println("hahaha");
 	        	}
