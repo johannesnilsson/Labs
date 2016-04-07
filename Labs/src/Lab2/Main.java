@@ -20,6 +20,7 @@ public class Main {
 	        	String wordToAdd = scan.nextLine();
 	        	System.out.println("Adding " + wordToAdd + " to the List");
 	        	wordLadder.add(new Word(wordToAdd));
+	        	System.out.println("SUG");
 	        }
 	}
 }
