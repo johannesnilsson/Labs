@@ -21,9 +21,10 @@ public class Word {
 	
 	public boolean checkWord(String s){
 		int nbrOfBreaks = 0;
-		for(int i = 0; i < theWord.length(); i++){
+		for(int i = 1; i < theWord.length(); i++){
 			for(int j = 0; j < s.length(); j++ ){
-				if(theWord.charAt(i+1) == s.charAt(j)){
+				System.out.println("index i: " + i + " index j: " + j);
+				if(theWord.charAt(i) == s.charAt(j)){
 					nbrOfBreaks++;
 					break;
 				}
