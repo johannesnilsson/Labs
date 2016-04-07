@@ -3,7 +3,7 @@ package Lab2;
 import java.util.*;
 
 public class Word {
-	String theWord = null;
+	String theWord = null; //
 	List<Integer> neighbours = null;
 
 	public Word(String word){
