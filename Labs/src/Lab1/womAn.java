@@ -3,7 +3,7 @@ package Lab1;
 public class womAn {
 	public static void main(String [] args)
 	{
-		System.out.println(" hejsadawdwaawwadn hopsan");
+		System.out.println(" hejsadawdwadawdwadhjahsjdhjksaaawwadn hopsan");
 	}
 
 }
