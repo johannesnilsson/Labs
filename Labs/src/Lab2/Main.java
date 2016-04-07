@@ -9,8 +9,8 @@ public class Main {
 	
 	public static void main(String [] args){
 		
-		File myFile = new File("C:\\Users\\Johannes\\GITHUB2\\Labs\\src\\Lab2\\words-10.dat");
-		//File myFile = new File("/Users/emirhusic/git/Labs/Labs/src/Lab2/words-10.dat");
+		//File myFile = new File("C:\\Users\\Johannes\\GITHUB2\\Labs\\src\\Lab2\\words-10.dat");
+		File myFile = new File("/Users/emirhusic/git/Labs/Labs/src/Lab2/words-10.dat");
 		Scanner scan = null; //kommentar
 		try {
 			scan = new Scanner(myFile);
@@ -31,7 +31,7 @@ public class Main {
 	        	for(int i=0; i < wordLadder.size(); i++) // comparing index
 	        	{
 	        		Word compareWord = wordLadder.get(i);	// get comparison word
-	        		if(currentWord.checkWord(compareWord.getName())) // check if word is match
+	        		if(currentWord.checkWord(compareWord.getName()) && !currentWord.getName().equals(wordLadder.get(i).getName())) // check if word is match
 	        		{
 	        			currentWord.addNeighbour(i);; // add the index of match
 	        		}
@@ -46,5 +46,10 @@ public class Main {
 	        	}
 	        	System.out.println();
 	        }
+	        
+	       // BFS(List<Word> wordLadder, String begin, String end)
+	        BFS myBFS = new BFS(wordLadder,"write","their");
+	        System.out.println(myBFS.doit());
+	        
 	}		
 }
