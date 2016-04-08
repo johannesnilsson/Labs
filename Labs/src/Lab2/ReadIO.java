@@ -81,6 +81,7 @@ public class ReadIO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//Path file = Paths.get("/Users/emirhusic/git/labs/labs/src/lab2/" +ourOutPutFile);
 	}
 	//modify to .out
 	public String changeToOut(String s){
