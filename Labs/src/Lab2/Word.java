@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Word {
 	String theWord = null; //
-	List<Integer> neighbours = null;
+	LinkedList<Integer> neighbours;
 	int distance = -1;
 	
 	public void setDistance(int d){
@@ -13,7 +13,7 @@ public class Word {
 
 	public Word(String word){
 		theWord = word;
-		neighbours = new ArrayList<Integer>();
+		neighbours = new LinkedList<Integer>();
 	}
 	
 	public String getName(){
@@ -22,6 +22,7 @@ public class Word {
 	
 	public void addNeighbour(int x){
 		neighbours.add(x);
+		
 	}
 	// In order to delete multiple chars.
 	public String changeCharInPosition(int position, char ch, String str){
@@ -32,14 +33,11 @@ public class Word {
 	
 	public boolean checkWord(String s){
 		int nbrOfBreaks = 0;
-		
 		for(int i = 1; i < theWord.length(); i++){
 			for(int j = 0; j < s.length(); j++ ){
 				//System.out.println("theWord: " + theWord + " s: " + s);
 				if(theWord.charAt(i) == s.charAt(j)){
-					//s.replace(s.charAt(j), ' ');
 					s = changeCharInPosition(j, '-', s); 
-					//System.out.println("s after replace: " + s);
 					nbrOfBreaks++;
 					break;
 				}
