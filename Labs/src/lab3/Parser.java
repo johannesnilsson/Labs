@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 
 public class Parser {
-	public static void main(String [] args){
-		Parser myParser = new Parser();
-		myParser.parseDistances();
-	}
+//	public static void main(String [] args){
+//		Parser myParser = new Parser();
+//		myParser.parseCities();
+//	}
 	
 	public Parser(){}
 	
@@ -40,9 +40,9 @@ public class Parser {
 				result.add(line);
 			}
 		}
-		for(String s : result){
-			System.out.println("city:" + s);
-		}
+//		for(String s : result){
+//			System.out.println("city:" + s);
+//		}
 		return result;
 	}
 	
