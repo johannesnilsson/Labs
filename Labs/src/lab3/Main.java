@@ -21,7 +21,10 @@ public class Main {
 	for(int i = 0; i < srcDistCost.size() - 2; i+=3){
 		p.setDistances(srcDistCost.get(i), srcDistCost.get(i+1), srcDistCost.get(i+2));
 	}
-	p.testPrint();
+	//p.testPrint();
+	p.getMST("Weed");
+
+	 //public void getMST(String source)
 //	p.setDistances(source, destination, distance);
 	//p.testPrint();
 
