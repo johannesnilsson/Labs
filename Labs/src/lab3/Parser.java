@@ -14,6 +14,8 @@ public class Parser {
 	public ArrayList<String> parseCities(){
 		ArrayList<String> result = new ArrayList<String>(130);
 		File myFile = new File("src/lab3/USA-highway-miles.in");
+	//	File myFile = new File("src/lab3/tinyEWG-alpha.txt");
+	//	File myFile = new File("src/lab3/emir.txt");
 		Scanner scan = null; 
 		try {
 			scan = new Scanner(myFile);
@@ -41,7 +43,10 @@ public class Parser {
 	/*ARRAY FORMAT: ---[STARTCITY][ENDCITY][COST]---*/
 	public ArrayList<String> parseDistances(){
 		ArrayList<String> result = new ArrayList<String> (25000);
+	//	File myFile = new File("src/lab3/emir.txt");
+
 		File myFile = new File("src/lab3/USA-highway-miles.in");
+		//File myFile = new File("src/lab3/tinyEWG-alpha.txt");
 		Scanner scan = null; 
 		try {
 			scan = new Scanner(myFile);

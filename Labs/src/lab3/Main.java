@@ -8,13 +8,6 @@ public class Main {
 	Parser pars = new Parser();
 	ArrayList<String> cities = pars.parseCities();
 	ArrayList<String> srcDistCost = pars.parseDistances();
-	
-//	for(int i = 0; i < srcDistCost.size(); i++){
-//		System.out.println(srcDistCost.get(i));
-//	}
-//	for(int i = 0; i < cities.size(); i++){
-//		System.out.println(cities.get(i));
-//	}
 
 	Prim p = new Prim(cities);
 
@@ -23,11 +16,7 @@ public class Main {
 	}
 	//p.testPrint();
 	p.getMST("Weed");
-
-	 //public void getMST(String source)
-//	p.setDistances(source, destination, distance);
-	//p.testPrint();
+	//p.getMST("A");
 
 	}
-
 }

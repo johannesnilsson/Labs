@@ -24,6 +24,9 @@ public class Coordinates {
 			if(coordinates.get(i).getX() == x && coordinates.get(i).getY() == y){
 				return true;
 			}
+			if(coordinates.get(i).getX() == y && coordinates.get(i).getY() == x){
+				return true;
+			}
 		}
 		
 		return false;
