@@ -2,9 +2,11 @@ package Lab4;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Parser {
+	ArrayList<Point> result = null;
 	int index;
 	double xCoord;
 	double yCoord;	
@@ -15,7 +17,9 @@ public class Parser {
 	
 	public Parser(){}
 	
-	public void doParse(String filename){
+	public ArrayList<Point> doParse(String filename){
+		String nbrOfEntries = filename.replaceAll( "[^\\d]", "" );
+		result = new ArrayList<Point>(Integer.parseInt(nbrOfEntries));
 		String filepath = "src/Lab4/testFiles/" + filename + ".tsp";
 		File myFile = new File(filepath);
 		Scanner scan = null; 
@@ -27,7 +31,6 @@ public class Parser {
 		while(scan.hasNext()){
 			if(!scan.hasNextInt()){
 				scan.nextLine();
-				//System.out.println("stuck?");
 				continue;
 			}
 			sindex = scan.next();
@@ -36,19 +39,21 @@ public class Parser {
 			index = Integer.parseInt(sindex);
 			xCoord = Double.parseDouble(sxC);
 			yCoord = Double.parseDouble(syC);
-			//System.out.println("the read: index: " + sindex + " xCoord: " + sxC + " yCoord: " + syC);
-			//System.out.println("the parsed index: " + index + " x: " + xCoord + " y: " + yCoord);
+			result.add(new Point(index, xCoord, yCoord));
 		}
+		
+//		for(Point p : result){
+//			System.out.println("ID: " + p.getID() + " xC: " + p.getX() + " yC: " + p.getY());
+//		}
+		
+		return result;
 	}
 	public static void main(String [] args){
 		System.out.println("Parsing...");
 		Parser myP = new Parser();
 		long time = System.currentTimeMillis();
-		myP.doParse("a280");
-		myP.doParse("ch150");
-		myP.doParse("d18512");
 		myP.doParse("pla85900");
-		myP.doParse("usa13509");
+//		myP.doParse("usa13509");
 		long result = System.currentTimeMillis() - time;
 		System.out.println("Done! Proccessed in: " + result + " ms.");
 	}
