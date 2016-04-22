@@ -3,8 +3,10 @@ public class Point {
 	
 	private double x;
 	private double y;
+	private int ID;
 	// create point with coordinate x,y
-	public Point(double x, double y){
+	public Point(int ID,double x, double y){
+		this.ID = ID;
 		this.x = x;
 		this.y = y;
 	}
@@ -15,6 +17,9 @@ public class Point {
 	//return y coordinate
 	public double getY(){
 		return y;
+	}
+	public int getID(){
+		return ID;
 	}
 	// return true if this x coordinate is greater then point p x coordinate
 	public boolean xGreater(Point p){
