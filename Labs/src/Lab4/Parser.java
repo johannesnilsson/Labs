@@ -12,12 +12,12 @@ public class Parser {
 	String sindex;
 	String sxC;
 	String syC;
-	boolean cordFlag = false;
 	
 	public Parser(){}
 	
-	public void doParse(){
-		File myFile = new File("src/Lab4/testFiles/ulysses22.tsp");
+	public void doParse(String filename){
+		String filepath = "src/Lab4/testFiles/" + filename + ".tsp";
+		File myFile = new File(filepath);
 		Scanner scan = null; 
 		try {
 			scan = new Scanner(myFile);
@@ -25,26 +25,31 @@ public class Parser {
 			e.printStackTrace();
 		}
 		while(scan.hasNext()){
-			String line = scan.nextLine();
-			if(line.compareTo("NODE_COORD_SECTION") != 0 && cordFlag){	
-				System.out.println("stuck?");
+			if(!scan.hasNextInt()){
+				scan.nextLine();
+				//System.out.println("stuck?");
 				continue;
 			}
 			sindex = scan.next();
 			sxC = scan.next();
 			syC = scan.next();
-//			index = scan.nextInt();
-//			xCoord = scan.nextDouble();
-//			yCoord = scan.nextDouble();
-			System.out.println("the read: index: " + sindex + " xCoord: " + sxC + " yCoord: " + syC);
-			
+			index = Integer.parseInt(sindex);
+			xCoord = Double.parseDouble(sxC);
+			yCoord = Double.parseDouble(syC);
+			//System.out.println("the read: index: " + sindex + " xCoord: " + sxC + " yCoord: " + syC);
+			//System.out.println("the parsed index: " + index + " x: " + xCoord + " y: " + yCoord);
 		}
 	}
 	public static void main(String [] args){
-		System.out.println("Running!");
-		double myD = 334.5909245845;
-		System.out.println(myD);
+		System.out.println("Parsing...");
 		Parser myP = new Parser();
-		myP.doParse();
+		long time = System.currentTimeMillis();
+		myP.doParse("a280");
+		myP.doParse("ch150");
+		myP.doParse("d18512");
+		myP.doParse("pla85900");
+		myP.doParse("usa13509");
+		long result = System.currentTimeMillis() - time;
+		System.out.println("Done! Proccessed in: " + result + " ms.");
 	}
 }
