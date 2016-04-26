@@ -16,7 +16,7 @@ public class Pair {
 		this.distance = distance;
 	}
 	public double getDistance(){
-		return distance;
+		return Math.abs(distance);
 	}
 	
 	public Pair getPair(){

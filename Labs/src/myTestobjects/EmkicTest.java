@@ -27,35 +27,35 @@ public class EmkicTest {
 		temp.add(p7);
 		temp.add(p8);
 		temp.add(p1);
-		for(int i = 0; i < temp.size(); i++){
-			System.out.println(temp.get(i).getID());
-		}
+//		for(int i = 0; i < temp.size(); i++){
+//			System.out.println(temp.get(i).getID());
+//		}
 		//public ClosestPair(ArrayList<Points> points){
-		Parser myParser = new Parser();
-		temp =myParser.doParse("vm1084");
-		
-		
-		ClosestPair test = new ClosestPair(temp, "vm1084", "1084");
-		
 //		Parser myParser = new Parser();
-//        @SuppressWarnings("unused")
-//        ClosestPair test = null;
-//       
-//        File folder = new File("src/Lab4/testFiles/");
-//        File[] listOfFiles = folder.listFiles();
-//
-//        for (File file : listOfFiles) {
-//            if (file.isFile()) {
-//                                    // System.out.print("../testFiles/" + file.getName() +"       ");
-//                                     String nbrOfEntries = file.getName().replaceAll( "[^\\d]", "");
-//                                     String filename = file.getName().replace(".tsp", "");
-//                                  //   System.out.println(filename);
-//                                 //    System.out.print(": " + nbrOfEntries + " ");
-//                                     temp = myParser.doParse(filename);
-//                                     test = new ClosestPair(temp,file.getName(),nbrOfEntries);
-//              
-//            }
-//        }
+//		temp =myParser.doParse("ulysses16");
+//		
+//		
+//		ClosestPair test = new ClosestPair(temp, "ulysses16.tsp", "1084");
+		
+		Parser myParser = new Parser();
+        @SuppressWarnings("unused")
+        ClosestPair test = null;
+       
+        File folder = new File("src/Lab4/testFiles/");
+        File[] listOfFiles = folder.listFiles();
+
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                                    // System.out.print("../testFiles/" + file.getName() +"       ");
+                                     String nbrOfEntries = file.getName().replaceAll( "[^\\d]", "");
+                                     String filename = file.getName().replace(".tsp", "");
+                                  //   System.out.println(filename);
+                                 //    System.out.print(": " + nbrOfEntries + " ");
+                                     temp = myParser.doParse(filename);
+                                     test = new ClosestPair(temp,file.getName(),nbrOfEntries);
+              
+            }
+        }
 
 	}
 }
