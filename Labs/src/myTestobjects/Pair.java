@@ -37,8 +37,7 @@ public class Pair {
 	}
 	public static Pair setPair(Points p1, Points p2, double distance){
 		Pair temp = new Pair(p1,p1.getID(),p2,p2.getID(),distance);
-		return temp;
-	//	return this;
+		return temp; 
 	}
 
 
