@@ -1,6 +1,6 @@
 package myTestobjects;
 
-import java.util.*;
+
 import java.util.ArrayList;
 
 public class ClosestPair {
@@ -25,18 +25,18 @@ public class ClosestPair {
 	//	System.out.println("Between points ID:" +minimum.getP1().getID() +" - ID:" +minimum.getP2().getID());
 	}
 	
-	private double bruteForceAttack(ArrayList<Points> p) {
-		double tempSize = Integer.MAX_VALUE;
-		for(int i = 0; i < p.size(); i++){
-			for(int j = 0; j < p.size(); j++){
-				if(distanceTo(p.get(i),p.get(j)) < tempSize && i != j){
-					tempSize = distanceTo(p.get(i),p.get(j));
-				//	System.out.println(tempSize +" between pts " +p.get(i).getID() +" "+ p.get(j).getID());
-				}
-			}
-		}
-		return tempSize;
-	}
+//	private double bruteForceAttack(ArrayList<Points> p) {
+//		double tempSize = Integer.MAX_VALUE;
+//		for(int i = 0; i < p.size(); i++){
+//			for(int j = 0; j < p.size(); j++){
+//				if(distanceTo(p.get(i),p.get(j)) < tempSize && i != j){
+//					tempSize = distanceTo(p.get(i),p.get(j));
+//				//	System.out.println(tempSize +" between pts " +p.get(i).getID() +" "+ p.get(j).getID());
+//				}
+//			}
+//		}
+//		return tempSize;
+//	}
 
 	public Pair closestPairRec(ArrayList<Points> Px, ArrayList<Points> Py){
 		//System.out.println(Px.size() + Py.size());
