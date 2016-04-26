@@ -2,7 +2,7 @@ package myTestobjects;
 import java.util.ArrayList;
 
 public class ClosestPair {
-	private ArrayList<Points> xSort;
+	private ArrayList<Points> xSort; // ya
 	private ArrayList<Points> ySort;
 	private String names;
 	
