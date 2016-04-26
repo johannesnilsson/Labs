@@ -8,36 +8,18 @@ public class ClosestPair {
 	private ArrayList<Points> ySort;
 	private ArrayList<Points> P;
 	
-	public ClosestPair(ArrayList<Points> points){
+	public ClosestPair(ArrayList<Points> points,String fileName, String nbrOfEntries){
 		this.P = points;
-		print(P);
+		//print(P);
+		
 		// comes in all points
 		// make 2 sorted list of the points.
 		xSort = sortList(points,"x"); // the sort takes O(n log n) time
 		ySort = sortList(points,"y");
 		//print(xSort);
-		//print(ySort);
-		// prinyt to check sorting
-		//print(xSort); 
-	//	print(ySort);
-		//
-		
-		// up to three points we
-		// brute force the search
-	/*	if(P.size() <= 3){
-			Pair minPair = bfClosest(P);
-			System.out.println("The min distance is: " +minPair.getDistance());
-			System.out.println("Between points ID:" +minPair.getP1().getID() +" - ID:" +minPair.getP2().getID());
-		}
-		else{
-			//handle the normal case
-			// do the closest pair algorithm
-			//closestPairRec(xSort,ySort);
-			
-		}
-		*/
+
 		Pair minimum = closestPairRec(xSort,ySort);
-		System.out.println("The min distance is: " +minimum.getDistance());
+		System.out.println(fileName +" " +nbrOfEntries +" " +minimum.getDistance());
 		System.out.println("Between points ID:" +minimum.getP1().getID() +" - ID:" +minimum.getP2().getID());
 
 
@@ -51,8 +33,7 @@ public class ClosestPair {
 		//	System.out.println("Between points ID:" +minPair.getP1().getID() +" - ID:" +minPair.getP2().getID());
 			return minPair;
 		}
-		
-		
+	
 		// create Qx,Qy, Rx,Ry
 		ArrayList<Points> Qx = new ArrayList<Points>(Px.size()/2);
 		ArrayList<Points> Qy = new ArrayList<Points>(Px.size()/2);
@@ -66,30 +47,89 @@ public class ClosestPair {
 			if(i < middlePoint){
 				Qx.add(Px.get(i));
 				Qy.add(Py.get(i));
-				
 			}
 			else{
 				Rx.add(Px.get(i));
 				Ry.add(Py.get(i));
 			}
 		}
-		Pair Q = closestPairRec(Qx, Qy);
-		Pair R = closestPairRec(Rx,Ry);
+		Pair Q = closestPairRec(Qx, Qy); // minimum distance pair of left
+		Pair R = closestPairRec(Rx,Ry); // minimum distance pair of right
 		
 		Pair minPairDistance = null;
-		if(distanceTo(Q.getP1(),Q.getP2()) < distanceTo(R.getP1(),R.getP2()) ){
+		if(distanceTo(Q.getP1(),Q.getP2()) < distanceTo(R.getP1(),R.getP2()) ){ //&& distanceTo(Q.getP1(),Q.getP2()) != 0 ){
 			minPairDistance = Q;
 		}else{
 			minPairDistance = R;
 		}
-		int maxXCoord = Qx.size();
+		int maxXCoord = Qx.size(); // this may be incorrect
+		int line = maxXCoord; // dont get it this is the vertical line?!
+		
+		double lambda = minPairDistance.getDistance();
+		//create Sy
+		ArrayList<Points> Sy = new ArrayList<Points>();
+		
 
+		for(int i = 0; i < Py.size(); i++){
+			if(Py.get(i).getX() >= line - lambda 
+					&& Py.get(i).getX() <= line + lambda
+					){//&& minPairDistance.getDistance() != 0){
+				Sy.add(Py.get(i));
+			}
+		}
+		System.out.println("printing SY");
+		print(Sy);
+		//print(Sy);
+		//System.out.println("hahahah " + "size of Sy: " +Sy.size());
+		//print(Sy);
 		
-		print(Qx);
-		print(Qy);
-		print(Rx);
-		print(Ry);
+		// for each points in Sy comptue distance to next 15 pts,
+		// check if it is smaller then our minpairdist
 		
+	//	int tempMin;
+	//	Pair closePair = Integer.MAX_VALUE;
+		if(Sy.size() == 15) {
+			print(Sy);
+			System.out.println("hahahaahah#############################################################################");
+		}
+		//System.out.println(Sy.size());
+		Pair delta = new Pair(null,-1,null,-1,Integer.MAX_VALUE);
+		for(int i =0; i < Sy.size(); i++){
+			//System.out.println("size of Sy " +Sy.size());
+			if(Sy.size() - i < 15){
+				for(int k = i; k < Sy.size(); k++){
+					//System.out.println("hahahaahah");
+					double distance = distanceTo(Sy.get(i),Sy.get(k));
+					if(distance < delta.getDistance() && i != k){ //&& minPairDistance.getDistance() != 0){
+					//	System.out.println("we found a smaller distance!!");
+						delta = Pair.setPair(Sy.get(i),Sy.get(k), distance);
+					//	minPairDistance = new Pair(Sy.get(i),Sy.get(i).getID(),Sy.get(k),Sy.get(k).getID(),distanceTo(Sy.get(i),Sy.get(k)));
+					}
+				}
+			}
+			else{
+				for(int j = i+1; j<i+15; j++){
+					double distance = distanceTo(Sy.get(i),Sy.get(j));
+					if(distance < delta.getDistance() && j != i){
+					//	System.out.println("we found a smaller distance!!");
+				//		System.out.print("it is " +Sy.get(i).getID() +"-" + Sy.get(j).getID());		
+						delta = Pair.setPair(Sy.get(i), Sy.get(j), distance);
+					//	minPairDistance = new Pair(Sy.get(i),Sy.get(i).getID(),Sy.get(j),Sy.get(j).getID(),distanceTo(Sy.get(i),Sy.get(j)));
+
+					}
+		
+				}
+			}
+		}
+		
+	//	print(Qx);
+	//	print(Qy);
+	//	print(Rx);
+	//	print(Ry);
+		System.out.println(delta.getDistance() +"<<<<<    >>>>>" +minPairDistance.getDistance());
+		if(delta.getDistance() < minPairDistance.getDistance()){
+			return delta;
+		}
 		return minPairDistance;
 	}
 
@@ -100,7 +140,8 @@ public class ClosestPair {
 		for(int i = 0; i < P.size() -1; i++){
 			double distance = distanceTo(P.get(i),P.get(i+1));
 			if(distance < temp.getDistance()){
-				temp = new Pair(P.get(i),P.get(i).getID(),P.get(i+1),P.get(i+1).getID(),distance);
+				temp = Pair.setPair(P.get(i), P.get(i+1), distance);
+				//temp = new Pair(P.get(i),P.get(i).getID(),P.get(i+1),P.get(i+1).getID(),distance);
 			}
 		}
 		if(Integer.MAX_VALUE ==temp.getDistance()){
@@ -184,7 +225,6 @@ public class ClosestPair {
 				}
 			}
 		}
-
 		// we jumped out the while loop, so one list is done.
 		// fill the rest from the non empty list.
 		while(i < A.size()){
@@ -198,5 +238,4 @@ public class ClosestPair {
 		// return the sorted list
 		return temp;
 	}
-
 }
